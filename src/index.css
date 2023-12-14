@@ -1,3 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input {
+  background-color: transparent;
+  padding: 1.25rem 1rem;
+  color: slategray;
+  border: 0.1rem solid slategray;
+  font-family: inherit;
+  font-size: 1.5rem;
+  outline: none;
+  margin-right: 1rem;
+  border-radius: 0.625rem;
+}
+
+input::placeholder {
+  color: slategray;
+}
+
+button {
+  background-color: #fff;
+  padding: 1.25rem 1rem;
+  border: 0.1rem solid slategray;
+  border-radius: 0.625rem;
+  font-family: inherit;
+  font-size: 1.5rem;
+  outline: none;
+  transition: all 0.15s ease-in-out;
+}
+
+button:hover {
+  background-color: transparent;
+  cursor: pointer;
+  color: slategray;
+}
+
+form {
+  margin-bottom: 2rem;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +48,167 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  background-color: #111827;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.section {
+  padding: 1.25rem;
+}
+
+.section .title h1 {
+  font-weight: bold;
+  font-size: 3rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.spinner {
+  width: 5rem;
+  height: 5rem;
+  border: 0.2rem solid rgb(150, 165, 180, 0.445);
+  border-top-color: rgb(244, 68, 68);
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+  position: absolute;
+  top: 50%;
+  left: 44%;
+  transform: translate(-44%,-50%);
+}
+
+@keyframes spin{
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.section .title a {
+  display: flex;
+  text-align: center;
+  color: slategray;
+  align-items: center;
+  text-decoration: underline;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.section .title a:hover {
+  color: #fff;
+}
+
+.section .cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.section .cards div {
+  background-color: #161f34;
+  padding: 1rem;
+  border-radius: 0.625rem;
+}
+
+.section .cards div h2 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.section .cards div h1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section .cards div ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.section .cards div ul li {
+  color: slategray;
+}
+
+.section .cards div ul li:first-child {
+  color: slategray;
+}
+
+.section .cards div ul li a {
+  color: slategray;
+  text-decoration: underline;
+}
+
+.section .cards div ul li a:hover {
+  color: #fff;
+}
+
+.section .cards div p {
+  color: slategray;
+}
+
+@media (min-width: 786px) {
+  .section .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section .title h1 {
+    font-size: 6rem;
+  }
+  form {
+    display: flex;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .section {
+    max-width: 992px;
+    margin: auto;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ... (Your existing styles) ... */
+
+.category {
+  font-size: 1.5rem;
+  color: #fff; /* Set the text color to white */
+  background-color: #161f34;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.625rem;
+}
+
+.section .cards div h2 {
+  color: #fff; /* Set the color of h2 to white */
+  margin-bottom: 1rem;
+}
+/* Add this style to make the category text white */
+.section h2 {
+  color: #fff;
 }
