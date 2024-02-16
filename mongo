@@ -51,4 +51,5 @@ Note : Do this query without using $and operator.
 
 
 20. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which achieved a score which is not more than 10.
+SELECT ENAME,JOB FROM EMP WHERE (ENAME LIKE ‘_N%’) OR ENAME LIKE‘__N%’) AND  (ENAME LIKE ‘%N’) OR ENAME LIKE’%S’); 
 
