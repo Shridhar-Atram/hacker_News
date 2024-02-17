@@ -1,55 +1,163 @@
-1. Write a MongoDB query to display all the documents in the collection restaurants.
 
 
-2. Write a MongoDB query to display the fields restaurant_id, name, borough and cuisine for all the documents in the collection restaurant.
-
-3. Write a MongoDB query to display the fields restaurant_id, name, borough and cuisine, but exclude the field _id for all the documents in the collection restaurant.
 
 
-4. Write a MongoDB query to display the fields restaurant_id, name, borough and zip code, but exclude the field _id for all the documents in the collection restaurant.
+1. Designation_Masters
 
-5. Write a MongoDB query to display all the restaurant which is in the borough Bronx.
-
-6. Write a MongoDB query to display the first 5 restaurant which is in the borough Bronx.
-
-
-7.Write a MongoDB query to display the next 5 restaurants after skipping first 5 which are in the borough Bronx.
+create table Designation_Masters(Design_code number(3) not null, Design_name varchar2(50));
+desc Designation_Masters;
 
 
-8. Write a MongoDB query to find the restaurants who achieved a score more than 90.
+2. Department_Masters
+create table Department_Masters(Dept_Code number(2) not null, Dept_name varchar2(50));
+desc Department_Masters;
+
+3.Student_Code
+
+create table student_masters(Student_code number(6) not null , Students_name varchar2(50) not null , Dept_Code Number(2), Student_dob Date, Student_Address varchar2(240));
+desc Student_Code;
+
+4. Students_Marks
+ create table Students_Marks(Student_Code Number(6), Student_year Number not null, Subject1 Number(3),Subject2 Number(3),Subject3 Number(3));
+
+5.  Staff_Masters
+create table Staff_Masters(Staff_code Number(8) not null , Staff_Name Varchar2(5) not null , Design_Code Number, Dept_code Number, HireDate Date, Staff_dob date, Staff_address Varchar(240), Mgr_code Number(8), Staff_sal NUmber(10,2) );
+
+6. Book_Masters
+create table Book_Masters(Book_code Number(10) not null , Book_Name varchar2(50) not null, Book_pub_year Number, Book_pub_author Varchar2(5));
+
+7.Book_Transactions
+create table Book_Transactions(Book_Code Number, Student_code Number, Staff_code Number, Book_issue_date date not null, Book_expected_return_date date not null , Book_actual_return date not null);
 
 
-9. Write a MongoDB query to find the restaurants that achieved a score, more than 80 but less than 100.
 
-10. Write a MongoDB query to find the restaurants which locate in latitude value less than -95.754168.
+insert into designation_masters values(100,'abc'); 
+
+insert into designation_masters values(101,'xyz');
+
+insert into designation_masters values(102,'def');
+
+insert into designation_masters values(103,'pqr');
+
+insert into designation_masters values(104,'lmn');
+
+insert into designation_masters values(105,'rst');
+ 
+ 
+insert into department_masters values(10,'IT'); 
+
+insert into department_masters values(20,'ENTC');
+
+insert into department_masters values(30,'MECH');
+
+insert into department_masters values(40,'ELE');
+
+insert into department_masters values(50,'CIVIL');
+
+insert into department_masters values(60,'BIO');
+ 
+ 
+insert into student_masters values(100009,'ShrI',10,to_date('11/09/1982','dd/mm/yyyy'),'saratale');
+
+insert into student_masters values(100001,'Tanmay',20,to_date('16/08/2002','dd/mm/yyyy'),'satara');
+
+insert into student_masters values(100002,'Lakshya',30,to_date('08/10/2006','dd/mm/yyyy'),'solapur');
+
+insert into student_masters values(100003,'Pratik',40,to_date('03/07/2007','dd/mm/yyyy'),'sangli');
+
+insert into student_masters values(100004,'Aditya',50,to_date('15/12/2009','dd/mm/yyyy'),'sinner');
+
+insert into students_marks values(100000,'1',56,89,54);
+insert into students_marks values(100001,'2',59,44,84);
+insert into students_marks values(100003,'3',87,44,54);
+insert into students_marks values(100000,'4',90,34,78);
+insert into students_marks values(100000,'3',54,79,44);
+insert into students_marks values(100000,'2',76,67,68);
+ 
+ 
+insert into staff_masters values(10000001,'A',100,10,to_date('16/09/2002','dd/mm/yyyy'),to_date('15/02/2001','dd/mm/yyyy'),'saratale',10000006,5648);
+insert into staff_masters values(10000002,'B',101,20,to_date('16/08/2002','dd/mm/yyyy'),to_date('15/12/2002','dd/mm/yyyy'),'satara',null,9000);
+insert into staff_masters values(10000003,'C',102,30,to_date('08/10/2006','dd/mm/yyyy'),to_date('03/07/2003','dd/mm/yyyy'),'solapur',10000005,7576);
+insert into staff_masters values(10000004,'D',103,40,to_date('03/07/2007','dd/mm/yyyy'),to_date('17/07/2005','dd/mm/yyyy'),'sangli',10000006,8987);
+insert into staff_masters values(10000005,'F',104,50,to_date('15/12/2009','dd/mm/yyyy'),to_date('16/08/2003','dd/mm/yyyy'),'sinner',10000002,3445);
+insert into staff_masters values(10000006,'G',105,60,to_date('15/02/2009','dd/mm/yyyy'),to_date('16/09/2001','dd/mm/yyyy'),'indore',10000002,8678);
+ 
+ 
+insert into book_masters values(1000000001,'P',2000,'mark');
+insert into book_masters values(1000000002,'Q',2004,'smith');
+insert into book_masters values(1000000003,'R',2008,'julie');
+insert into book_masters values(1000000004,'S',2012,'nick');
+insert into book_masters values(1000000005,'T',2005,'noah');
+ 
+insert into book_transactions values(1000000001,100000,10000001,to_date('16/09/2023','dd/mm/yyyy'),to_date('26/09/2023','dd/mm/yyyy'),to_date('28/09/2023','dd/mm/yyyy'));
+insert into book_transactions values(1000000002,100001,10000002,to_date('05/07/2023','dd/mm/yyyy'),to_date('15/07/2023','dd/mm/yyyy'),to_date('17/07/2023','dd/mm/yyyy'));
+insert into book_transactions values(1000000003,100002,10000003,to_date('10/08/2023','dd/mm/yyyy'),to_date('20/08/2023','dd/mm/yyyy'),to_date('22/08/2023','dd/mm/yyyy'));
+insert into book_transactions values(1000000004,100003,10000005,to_date('15/03/2023','dd/mm/yyyy'),to_date('25/03/2023','dd/mm/yyyy'),to_date('27/03/2023','dd/mm/yyyy'));
+insert into book_transactions values(1000000005,100004,10000004,to_date('07/05/2023','dd/mm/yyyy'),to_date('17/05/2023','dd/mm/yyyy'),to_date('19/05/2023','dd/mm/yyyy'));
+insert into book_transactions values(1000000001,100002,10000006,to_date('02/10/2023','dd/mm/yyyy'),to_date('12/10/2023','dd/mm/yyyy'),to_date('14/10/2023','dd/mm/yyyy'));
 
 
-11. Write a MongoDB query to find the restaurants that do not prepare any cuisine of 'American' and their grade score more than 70 and latitude less than -65.754168.
 
 
-12. Write a MongoDB query to find the restaurants which do not prepare any cuisine of 'American' and achieved a score more than 70 and located in the longitude less than -65.754168.
-Note : Do this query without using $and operator.
-
-13. Write a MongoDB query to find the restaurants which do not prepare any cuisine of 'American' and achieved a grade point 'A' not belongs to the borough Brooklyn. The document must be displayed according to the cuisine in descending order.
 
 
-14. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which contain 'Wil' as first three letters for its name.
 
-15. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which contain 'ces' as last three letters for its name.
-
-
-16. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which contain 'Reg' as three letters somewhere in its name.
+Data query language:
 
 
-17. Write a MongoDB query to find the restaurants which belong to the borough Bronx and prepared either American or Chinese dish.
+1 > select STAFF_NAME, STAFF_SAL , DEPT_CODE from STAFF_MASTERS  where DEPT_CODE in (20,30,40);
+2 > select STAFF_NAME AS FIRST_NAME , STAFF_SAL AS SALARY , DEPT_CODE AS DEPTARTMENT_ID from STAFF_MASTERS;
+3 > SELECT STUDENT_CODE AS CODE,STUDENT_YEAR AS YEAR,(SUBJECT1 + SUBJECT2 +SUBJECT3) AS TOTAL_MARKS FROM STUDENTS_MARKS;
+4 > select * from designation_masters  where DESIGN_NAME = 'PROFESSOR' OR DESIGN_NAME = 'LECTURER';
+5 > select staff_code , design_code , dept_code from staff_masters where ((sysdate - hiredate)/365) > 18;
+6 >  select staff_Name,design_name from staff_masters inner join designation_masters on staff_masters.design_code = designation_masters.design_code;
+7 > select staff_Name,design_name ,staff_sal*10  YEARS_SAL from staff_masters inner join designation_masters on staff_masters.design_code = designation_masters.design_code where DEPT_CODE IN(10,30);
+8 > select staff_name , (ROUND((sysdate - hiredate)/365)) from staff_masters inner join designation_masters on staff_masters.design_code = designation_masters.design_code where DESIGN_NAME = 'LECTURER';
+9 > SQL> SELECT STUDENTS_NAME || ',' || ','||DEPT_CODE FROM student_masters;
+10 >  select  staff_name , staff_sal from staff_masters where staff_sal between 12000 AND 25000 ORDER BY staff_sal ;
+11 > select staff_code , mgr_code from staff_masters where mgr_code is null;
+12 > select students_name, dept_code,Student_dob from student_masters where Student_dob  between '01-JAN-1981' and '31-MAR-1983';
+13 > SELECT DEPTNO , SUM(SAL) AS SUM_SAL FROM EMP WHERE JOB !='MANAGER' GROUP BY DEPTNO HAVING(SUM(SAL)>2000);
+14 > 
+15 > SELECT STUDENTS_NAME , NVL(to_char(DEPT_CODE), 'NO DEPARTMENT') AS DEPARTMENT FROM student_masters;
+16 > select staff_name ,  staff_sal, RPAD(' ' , (staff_sal/1000), 'X') from staff_masters;
 
 
-18. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which belong to the borough Staten Island or Queens or Bronxor Brooklyn.
 
 
-19. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which are not belonging to the borough Staten Island or Queens or Bronxor Brooklyn.
+Single roww function
+
+1 > select * FROM student_masters where to_char(student_dob,'D') in (1,7);
+2 > select staff_name, round((sysdate-hiredate)/30) as months_worked from staff_masters order by months_worked;
+3 > select * from staff_masters where staff_name like 'A%' and staff_name like '%S';
+4 > SELECT ENAME,JOB FROM EMP WHERE (ENAME LIKE '_N%') OR (ENAME LIKE '__N%') AND (ENAME LIKE '%N') OR (ENAME LIKE '%S');
+5 >  SELECT staff_name, staff_sal , lpad(staff_sal, 15 , '$') as padd_sal from staff_masters;
+6 > select ename from emp where ename like '%_%';
+7 >  select STAFF_NAME from staff_masters WHERE TO_CHAR(HIREDATE,'MM')= 12;
+8 > select staff_name,staff_sal,
+    CASE
+    WHEN staff_sal >=15000 THEN 'A'
+    WHEN staff_sal >=10000 AND staff_sal < 15000 THEN 'B'
+    WHEN staff_sal >=5000 AND staff_sal < 10000 THEN 'C'
+    ELSE  'D'
+    END
+    FROM staff_masters;
+9>  select staff_name,hiredate, to_char(hiredate, 'day') as day from staff_masters;
+10>
+11> SELECT SUBSTR(STAFF_NAME,1,1)||LPAD(‘*’,LENGTH(STAFF_NAME)-2,’*’)||
+SUBSTR(STAFF_NAME,LENGTH(STAFF_NAME),1) FROM STAFF_MASTERS;
+12 >SELECT TO_CHAR(HIREDATE,’DD’)FROM STAFF_MASTERS WHERE TO_CHAR(HIREDATE,’DD’) BETWEEN 1 AND 15;
+13 > SELECT last_name, hire_date, TO_CHAR(hire_date,'DAY') AS DAY FROM employees ORDER BY hire_date, DAY;
+14 > SELECT INSTR(‘MISSISSIPPI’,’I’,1,3) FROM DUAL;
+15 > SELECTUPPER(TO_CHAR(TO_DATE(TO_CHAR(NEXT_DAY(LAST_DAY(SYSDATE),’FRIDAY’)7,’DD’)),J),’JSP))||’OF’||TO_CHAR(NEXT_DAY(LAST_DAY(SYSDATE),’FRIDAY’)-7,’MONTH,YYYY’) AS PAY_DATE FROM DUAL;
 
 
-20. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which achieved a score which is not more than 10.
-SELECT ENAME,JOB FROM EMP WHERE (ENAME LIKE ‘_N%’) OR ENAME LIKE‘__N%’) AND  (ENAME LIKE ‘%N’) OR ENAME LIKE’%S’); 
+GROUP FUNCTION
+
+16> SELECT (MAX(STAFF_SAL),MIN(STAFF_SAL),ROUND(AVG(STAFF_SAL)),SUM(STAFF_SAL) FROM STAFF_MASTERS;
+17 > SELECT DEPT_NAME,STAFF_MASTERS.DEPT_CODE,STAFF_SAL AS S,MAX(S),MIN(S),ROUND(AVG(S)),SUM(S) FROM STAFF_MASTERS,DEPARTMENT_MASTERS WHERE STAFF_MASTERS.DEPT_CODE=DEPARTMENT_MASTERS.DEPT_CODE GROUP BY DEPT_NAME,STAFF_MASTERS.DEPT_CODE;
+18 > SELECT STAFF_MASTERS.DEPT_CODE,DEPT_CODE,COUNT(STAFF_MASTERS.STAFF_CODE) FROM STAFF_MASTERS,DEPARTMENT_CODE WHERE STAFF_MASTERS.DEPT_MASTERS=DEPARTMENT_MASTERS.DEPT_CODE GROUP BY STAFF_MASTERS.DEPT_CODE,DEPT_NAME;
+19 > SELECT COUNT(JOB) AS TOTAL_NO_OF_MANAGERS FROM EMP WHERE JOB=’MANAGER’;
+20 > SELECT MGR,ENAME,JOB,SAL FROM EMP WHERE JOB=’MANAGER’ AND SAL>2000;
+
 
