@@ -1,54 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Assignment Viewer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
 </head>
 <body>
+    <form id="orderform">
+        <label for="barbiedoll">Barbie Doll:</label>
+        <input type="number" id="barbiedoll" name="barbiedoll" placeholder="Quantity" required><br><br>
+        
+        <label for="calculator">Calculator:</label>
+        <input type="number" id="calculator" name="calculator" placeholder="Quantity" required><br><br>
+        
+        <label for="mobilephone">Mobile Phone:</label>
+        <input type="number" id="mobilephone" name="mobilephone" placeholder="Quantity" required><br><br>
+        
+        <label for="lgdvd">LG DVD:</label>
+        <input type="number" id="lgdvd" name="lgdvd" placeholder="Quantity" required><br><br>
+        
+        <button type="button" class="abc" onclick="generateInvoice()">Generate Invoice</button>
+    </form>
 
-<frameset cols="30%, 70%">
-  <frame src="assignment_links.html" name="left_frame">
-  <frame src="default_assignment.html" name="right_frame">
-</frameset>
+    <script>
+        function generateInvoice() {
+            var barbieDoll = document.getElementById("barbiedoll").value;
+            var calculator = document.getElementById("calculator").value;
+            var mobilePhone = document.getElementById("mobilephone").value;
+            var lgDVD = document.getElementById("lgdvd").value;
 
-</body>
-</html>
+            // Creating an object to store the form data
+            var formData = {
+                barbieDoll: barbieDoll,
+                calculator: calculator,
+                mobilePhone: mobilePhone,
+                lgDVD: lgDVD
+            };
 
+            // Storing the form data in local storage
+            localStorage.setItem('formData', JSON.stringify(formData));
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Assignment Links</title>
-</head>
-<body>
-
-<h2>Assignments</h2>
-<ul>
-  <li><a href="assignment1.html" target="right_frame">Assignment 1</a></li>
-  <li><a href="assignment2.html" target="right_frame">Assignment 2</a></li>
-  <li><a href="assignment3.html" target="right_frame">Assignment 3</a></li>
-</ul>
-
-</body>
-</html>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Default Assignment</title>
-</head>
-<body>
-
-<h2>Welcome to Assignment Viewer</h2>
-<p>Please click on an assignment from the left frame to view it here.</p>
-
+            alert("Form data has been stored in local storage.");
+        }
+    </script>
 </body>
 </html>
