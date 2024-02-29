@@ -3,44 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Form</title>
+    <title>Product Order Form</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="number"] {
+            width: 50px;
+        }
+        #error-message {
+            color: red;
+            font-weight: bold;
+            display: none;
+        }
+        #invoice {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <form id="orderform">
-        <label for="barbiedoll">Barbie Doll:</label>
-        <input type="number" id="barbiedoll" name="barbiedoll" placeholder="Quantity" required><br><br>
-        
-        <label for="calculator">Calculator:</label>
-        <input type="number" id="calculator" name="calculator" placeholder="Quantity" required><br><br>
-        
-        <label for="mobilephone">Mobile Phone:</label>
-        <input type="number" id="mobilephone" name="mobilephone" placeholder="Quantity" required><br><br>
-        
-        <label for="lgdvd">LG DVD:</label>
-        <input type="number" id="lgdvd" name="lgdvd" placeholder="Quantity" required><br><br>
-        
-        <button type="button" class="abc" onclick="generateInvoice()">Generate Invoice</button>
-    </form>
+    <h2>Product Catalog</h2>
+    <table id="product-table">
+        <tr>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        <tr>
+            <td>Product A</td>
+            <td>Description A</td>
+            <td>$10.00</td>
+            <td><input type="number" id="quantity-A" min="0"></td>
+        </tr>
+        <tr>
+            <td>Product B</td>
+            <td>Description B</td>
+            <td>$15.00</td>
+            <td><input type="number" id="quantity-B" min="0"></td>
+        </tr>
+        <!-- Add more products here -->
+    </table>
+    
+    <button onclick="placeOrder()">Order</button>
+    <p id="error-message">Please enter quantity for all products</p>
+
+    <div id="invoice">
+        <h2>Invoice</h2>
+        <table id="invoice-table">
+            <!-- Invoice content will be dynamically generated here -->
+        </table>
+    </div>
 
     <script>
-        function generateInvoice() {
-            var barbieDoll = document.getElementById("barbiedoll").value;
-            var calculator = document.getElementById("calculator").value;
-            var mobilePhone = document.getElementById("mobilephone").value;
-            var lgDVD = document.getElementById("lgdvd").value;
+        function placeOrder() {
+            var quantityA = parseInt(document.getElementById("quantity-A").value);
+            var quantityB = parseInt(document.getElementById("quantity-B").value);
 
-            // Creating an object to store the form data
-            var formData = {
-                barbieDoll: barbieDoll,
-                calculator: calculator,
-                mobilePhone: mobilePhone,
-                lgDVD: lgDVD
-            };
+            if (isNaN(quantityA) || isNaN(quantityB) || quantityA === 0 && quantityB === 0) {
+                document.getElementById("error-message").style.display = "block";
+                document.getElementById("invoice").style.display = "none";
+            } else {
+                document.getElementById("error-message").style.display = "none";
+                document.getElementById("invoice").style.display = "block";
 
-            // Storing the form data in local storage
-            localStorage.setItem('formData', JSON.stringify(formData));
+                var productATotal = quantityA * 10;
+                var productBTotal = quantityB * 15;
+                var totalAmount = productATotal + productBTotal;
 
-            alert("Form data has been stored in local storage.");
+                var invoiceTable = document.getElementById("invoice-table");
+                invoiceTable.innerHTML = `
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>Product A</td>
+                        <td>${quantityA}</td>
+                        <td>$10.00</td>
+                        <td>$${productATotal.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td>Product B</td>
+                        <td>${quantityB}</td>
+                        <td>$15.00</td>
+                        <td>$${productBTotal.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: right;">Total Amount:</td>
+                        <td>$${totalAmount.toFixed(2)}</td>
+                    </tr>
+                `;
+            }
         }
     </script>
 </body>
