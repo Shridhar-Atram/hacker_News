@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Methods Demo</title>
+</head>
+<body>
+    <h1>String Methods Demo</h1>
+
+    <script>
+        // Define a sample string
+        var sampleString = "Hello World! This is a Sample String for Demo.";
+
+        // Using match method to find all occurrences of "Demo" and display the result
+        var matchResult = sampleString.match(/Demo/g);
+        document.write("<p>Occurrences of 'Demo': " + matchResult + "</p>");
+
+        // Using substr method to extract a substring from index 7 to 18 and display the result
+        var substrResult = sampleString.substr(7, 12);
+        document.write("<p>Substring from index 7 to 18: " + substrResult + "</p>");
+
+        // Using toLowerCase method to convert the string to lowercase and display the result
+        var lowercaseResult = sampleString.toLowerCase();
+        document.write("<p>Lowercase string: " + lowercaseResult + "</p>");
+
+        // Using toUpperCase method to convert the string to uppercase and display the result
+        var uppercaseResult = sampleString.toUpperCase();
+        document.write("<p>Uppercase string: " + uppercaseResult + "</p>");
+    </script>
+</body>
+</html>
