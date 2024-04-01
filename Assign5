@@ -1,32 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>String Methods Demo</title>
-</head>
-<body>
-    <h1>String Methods Demo</h1>
+Sure, here are some test cases for validating the fields you mentioned:
 
-    <script>
-        // Define a sample string
-        var sampleString = "Hello World! This is a Sample String for Demo.";
+1. **First Name:**
+   - Test Case 1: Verify that the field accepts valid alphabetic characters only.
+   - Test Case 2: Verify that the field does not accept numeric or special characters.
+   - Test Case 3: Verify that the field allows a minimum and maximum length of characters.
+   - Test Case 4: Verify that the field is required and cannot be left blank.
+   - Test Case 5: Verify that the field does not allow leading or trailing spaces.
 
-        // Using match method to find all occurrences of "Demo" and display the result
-        var matchResult = sampleString.match(/Demo/g);
-        document.write("<p>Occurrences of 'Demo': " + matchResult + "</p>");
+2. **Last Name:**
+   - Test Case 1: Same as First Name field tests.
 
-        // Using substr method to extract a substring from index 7 to 18 and display the result
-        var substrResult = sampleString.substr(7, 12);
-        document.write("<p>Substring from index 7 to 18: " + substrResult + "</p>");
+3. **Company:**
+   - Test Case 1: Verify that the field accepts alphanumeric characters and common special characters like hyphens and periods.
+   - Test Case 2: Verify that the field allows a minimum and maximum length of characters.
+   - Test Case 3: Verify that the field is optional and can be left blank.
 
-        // Using toLowerCase method to convert the string to lowercase and display the result
-        var lowercaseResult = sampleString.toLowerCase();
-        document.write("<p>Lowercase string: " + lowercaseResult + "</p>");
+4. **Phone Number:**
+   - Test Case 1: Verify that the field accepts numeric characters only.
+   - Test Case 2: Verify that the field does not accept alphabetic or special characters.
+   - Test Case 3: Verify that the field allows a specific format, such as (XXX) XXX-XXXX or XXX-XXX-XXXX.
+   - Test Case 4: Verify that the field is required.
+   - Test Case 5: Verify that the field validates the length of the phone number.
 
-        // Using toUpperCase method to convert the string to uppercase and display the result
-        var uppercaseResult = sampleString.toUpperCase();
-        document.write("<p>Uppercase string: " + uppercaseResult + "</p>");
-    </script>
-</body>
-</html>
+5. **Street Address:**
+   - Test Case 1: Verify that the field accepts alphanumeric characters, spaces, and common special characters like hyphens and commas.
+   - Test Case 2: Verify that the field allows a minimum and maximum length of characters.
+   - Test Case 3: Verify that the field is required.
+   - Test Case 4: Verify that the field does not accept invalid characters such as symbols.
+
+6. **City:**
+   - Test Case 1: Same as Street Address field tests.
+
+7. **State:**
+   - Test Case 1: Verify that the field accepts valid state abbreviations or full names.
+   - Test Case 2: Verify that the field is required.
+   - Test Case 3: Verify that the field does not accept invalid state names or abbreviations.
+
+8. **Zip Code:**
+   - Test Case 1: Verify that the field accepts numeric characters only.
+   - Test Case 2: Verify that the field does not accept alphabetic or special characters.
+   - Test Case 3: Verify that the field allows a specific format, such as XXXXX or XXXXX-XXXX.
+   - Test Case 4: Verify that the field is required.
+   - Test Case 5: Verify that the field validates the length of the zip code.
+
+9. **Country:**
+   - Test Case 1: Verify that the field accepts valid country names or abbreviations.
+   - Test Case 2: Verify that the field is required.
+   - Test Case 3: Verify that the field does not accept invalid country names or abbreviations.
+
+These test cases cover various aspects such as data validation, field requirements, formatting, and length constraints for each field.
