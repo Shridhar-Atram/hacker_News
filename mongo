@@ -185,3 +185,28 @@ ON
     D.DEPT_CODE = S.DEPT_CODE
 GROUP BY 
     D.DNAME;
+
+
+
+
+
+
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class MobileNumberChecker {
+    
+    public boolean isMobileNumberFormat(WebDriver driver, WebElement inputElement) {
+        // Get the value from the input element
+        String inputValue = inputElement.getAttribute("value");
+        
+        // Define a regular expression to match typical mobile phone number formats
+        // This regex matches formats like: +1234567890, 1234567890, 123-456-7890, (123) 456-7890, etc.
+        String regex = "^\\+?\\d{0,3}[-\\.\\s]?\\(?\\d{3}\\)?[-\\.\\s]?\\d{3}[-\\.\\s]?\\d{4}$";
+        
+        // Check if the input matches the regex pattern
+        return inputValue.matches(regex);
+    }
+}
+
