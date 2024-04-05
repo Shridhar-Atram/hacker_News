@@ -210,3 +210,20 @@ public class MobileNumberChecker {
     }
 }
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class PhoneNumberChecker {
+    
+    public boolean isSpecificPhoneNumberFormat(WebDriver driver, WebElement inputElement) {
+        // Get the value from the input element
+        String inputValue = inputElement.getAttribute("value");
+        
+        // Define a regular expression to match the specific phone number formats
+        // This regex allows for formats like: (XXX) XXX-XXXX or XXX-XXX-XXXXXX
+        String regex = "^\\(\\d{3}\\) \\d{3}-\\d{4}$|^\\d{3}-\\d{3}-\\d{6}$";
+        
+        // Check if the input matches either of the regex patterns
+        return inputValue.matches(regex);
+    }
+}
