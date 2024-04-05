@@ -227,3 +227,21 @@ public class PhoneNumberChecker {
         return inputValue.matches(regex);
     }
 }
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class AddressFieldValidator {
+    
+    public boolean isAddressFieldValid(WebDriver driver, WebElement inputElement) {
+        // Get the value from the input element
+        String inputValue = inputElement.getAttribute("value");
+        
+        // Define a regular expression to match alphanumeric characters, spaces, hyphens, commas, and common special characters
+        String regex = "^[a-zA-Z0-9\\s\\-\\,\\.\\#\\(\\)\\/]+$";
+        
+        // Check if the input matches the regex pattern
+        return inputValue.matches(regex);
+    }
+}
+
