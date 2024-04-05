@@ -49,3 +49,15 @@ Sure, here are some test cases for validating the fields you mentioned:
    - Test Case 3: Verify that the field does not accept invalid country names or abbreviations.
 
 These test cases cover various aspects such as data validation, field requirements, formatting, and length constraints for each field.
+public static void main(String[] args) {
+    // Example WebDriver and WebElement
+    WebDriver driver = new ChromeDriver();
+    WebElement addressField = driver.findElement(By.id("address"));
+
+    // Example input address
+    String inputAddress = "123 Main St, Apt 4B";
+
+    // Validate the address field
+    AddressFieldValidator validator = new AddressFieldValidator();
+    validator.isAddressFieldValid(driver, addressField, inputAddress);
+}
