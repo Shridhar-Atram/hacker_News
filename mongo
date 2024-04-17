@@ -291,3 +291,11 @@ Tester Comments:
 - The system should be updated to validate the input in the "First Name" field to only accept alphabetic characters and disallow trailing spaces. Regression testing is recommended to ensure that this change does not impact existing functionality, and additional test cases should be created to cover various scenarios for entering alphabetic, numeric, and special characters, as well as trailing spaces in the "First Name" field.
 
 
+Comments:
+- Despite user login, the address book accepts random input in the zipcode field, leading to acceptance upon saving.
+
+Severity:
+- High
+
+Tester Comments:
+- Verify user login status. Test zipcode field with random input to confirm acceptance upon saving, and validate proper input validation.
