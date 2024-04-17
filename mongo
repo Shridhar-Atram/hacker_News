@@ -1,4 +1,11 @@
+Comments:
+- The system allows numeric characters, special characters, and trailing spaces to be entered into the "First Name" field. This behavior does not align with the expected input validation for a "First Name" field, potentially leading to data integrity issues and confusion in the system.
 
+Severity: 
+- High
+
+Tester Comments:
+- The system should be updated to validate the input in the "First Name" field to only accept alphabetic characters and disallow trailing spaces. Regression testing is recommended to ensure that this change does not impact existing functionality, and additional test cases should be created to cover various scenarios for entering alphabetic, numeric, and special characters, as well as trailing spaces in the "First Name" field.
 
 
 
@@ -272,4 +279,15 @@ public class AddressFieldValidator {
         return inputValue.matches(regex);
     }
 }
+
+
+Comments:
+- The system allows numeric characters, special characters, and trailing spaces to be entered into the "First Name" field. This behavior does not align with the expected input validation for a "First Name" field, potentially leading to data integrity issues and confusion in the system.
+
+Severity: 
+- High
+
+Tester Comments:
+- The system should be updated to validate the input in the "First Name" field to only accept alphabetic characters and disallow trailing spaces. Regression testing is recommended to ensure that this change does not impact existing functionality, and additional test cases should be created to cover various scenarios for entering alphabetic, numeric, and special characters, as well as trailing spaces in the "First Name" field.
+
 
