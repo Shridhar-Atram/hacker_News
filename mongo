@@ -299,3 +299,36 @@ Severity:
 
 Tester Comments:
 - Verify user login status. Test zipcode field with random input to confirm acceptance upon saving, and validate proper input validation.
+
+
+
+from openpyxl import load_workbook
+
+def search_strings_in_excel(file_path, search_strings):
+    wb = load_workbook(file_path)
+    sheet = wb.active
+    
+    found_coordinates = []
+    
+    # Iterate through each row and column in the Excel sheet
+    for row in sheet.iter_rows():
+        for cell in row:
+            # Check if the cell value matches any of the search strings
+            for search_string in search_strings:
+                if search_string in str(cell.value):
+                    found_coordinates.append(cell.coordinate)
+    
+    return found_coordinates
+
+# Example usage
+file_path = "example.xlsx"
+search_strings = ["search_string1", "search_string2", "search_string3"]
+
+coordinates = search_strings_in_excel(file_path, search_strings)
+
+if coordinates:
+    print("Found the following coordinates in the Excel file:")
+    for coordinate in coordinates:
+        print(coordinate)
+else:
+    print("No matching strings found in the Excel file.")
