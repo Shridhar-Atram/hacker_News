@@ -332,3 +332,54 @@ if coordinates:
         print(coordinate)
 else:
     print("No matching strings found in the Excel file.")
+
+
+
+import pandas as pd
+from datetime import datetime
+from openpyxl import Workbook
+
+# Read the Excel file
+file = pd.read_excel("excel1.xlsx")
+
+# Initialize lists to store rows with null or empty values and negative values
+null_or_empty_rows = []
+negative_rows = []
+
+# Iterate through each row
+for idx, row in file.iterrows():
+    # Check for null or empty values in the row
+    if row.isnull().any() or (row == "").any():
+        null_or_empty_rows.append([row[file.columns[0]], f"Null or empty value encountered in row {idx + 1}"])
+    # Check for negative values in the row (if numeric)
+    if pd.to_numeric(row, errors='coerce').lt(0).any():
+        negative_rows.append([row[file.columns[0]], f"Negative value encountered in row {idx + 1}"])
+
+# Create a new Excel workbook if null/empty values or negative values are found
+if null_or_empty_rows or negative_rows:
+    # Create a new Excel workbook
+    wb = Workbook()
+    
+    # Add Null_values sheet if null or empty values are found
+    if null_or_empty_rows:
+        ws_null_values = wb.active
+        ws_null_values.title = "Null_values"
+        ws_null_values.append(["Column1", "Message"])
+        for null_row in null_or_empty_rows:
+            ws_null_values.append(null_row)
+    
+    # Add Negative_values sheet if negative values are found
+    if negative_rows:
+        ws_negative_values = wb.create_sheet(title="Negative_values")
+        ws_negative_values.append(["Column1", "Message"])
+        for negative_row in negative_rows:
+            ws_negative_values.append(negative_row)
+    
+    # Save the workbook with a timestamp in the filename
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_filename = f"{timestamp}_logfile.xlsx"
+    wb.save(log_filename)
+    
+    print(f"Log file '{log_filename}' created with null/empty values and/or negative values.")
+else:
+    print("No null/empty values or negative values found in the Excel file.")
