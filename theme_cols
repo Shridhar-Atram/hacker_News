@@ -1,0 +1,32 @@
+
+import pandas as pd
+
+# Define the column names including the nested fields
+columns = [
+    'Security Description',
+    'CUSIP',
+    'ISIN',
+    'Bloomberg Ticker',
+    'Price',
+    'PGI-Merrill Lynch Sector Breakdown (PGI_BAMLSECT) - Level 1',
+    'PGI-Merrill Lynch Sector Breakdown (PGI_BAMLSECT) - Level 2',
+    'PGI-Merrill Lynch Sector Breakdown (PGI_BAMLSECT) - Level 3',
+    'PGI-Merrill Lynch Sector Breakdown (PGI_BAMLSECT) - Level 4',
+    'PGI - Risk Country Bloc Summary (PGI_RISKCNTRY) - Level 1',
+    'PGI - Risk Country Bloc Summary (PGI_RISKCNTRY) - Level 2',
+    'Barclays Rating',
+    'S&P Rating',
+    'Moody',
+    'Fitch Rating',
+    ['Yield to Maturity (Portfolio)', 'Yield to Maturity (Benchmark)'],
+    ['Yield to Worst (Portfolio)', 'Yield to Worst (Benchmark)'],
+    ['OAS (Portfolio)', 'OAS (Benchmark)'],
+    ['Duration (Portfolio)', 'Duration (Benchmark)'],
+    ['Spread Duration (Portfolio)', 'Spread Duration (Benchmark)']
+]
+
+# Read the Excel file into a DataFrame
+df = pd.read_excel('input.xlsx', usecols=columns)
+
+# Print the DataFrame
+print(df)
