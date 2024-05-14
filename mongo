@@ -383,3 +383,29 @@ if null_or_empty_rows or negative_rows:
     print(f"Log file '{log_filename}' created with null/empty values and/or negative values.")
 else:
     print("No null/empty values or negative values found in the Excel file.")
+
+
+
+
+
+
+import pandas as pd
+
+# Read the Excel file
+df = pd.read_excel("excel1.xlsx")
+
+# Upper-level column name
+upper_column_name = "YTM"
+
+# Check if the upper-level column exists in the DataFrame
+if upper_column_name in df.columns:
+    # Get the index of the upper-level column
+    upper_column_index = df.columns.get_loc(upper_column_name)
+    
+    # Get the nested column name and the next column
+    nested_column_name = df.columns[upper_column_index + 1]
+
+    # Print the specified columns
+    print(df[[upper_column_name, nested_column_name]])
+else:
+    print("Error: Upper-level column not found in the DataFrame.")
