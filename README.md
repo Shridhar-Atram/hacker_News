@@ -68,3 +68,35 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+import pandas as pd
+
+# Reading the Excel files into DataFrames
+df1 = pd.read_excel('path_to_excel_file_1.xlsx')
+df2 = pd.read_excel('path_to_excel_file_2.xlsx')
+
+# Dropping rows with any null values in the entire DataFrame
+df1_clean = df1.dropna()
+df2_clean = df2.dropna()
+
+# List of required columns for comparison
+required_columns = ['column_name1', 'column_name2']  # Replace with actual column names
+
+# Merging DataFrames on required columns to find common data
+common_data = pd.merge(df1_clean, df2_clean, on=required_columns)
+
+# Finding non-common data
+non_common_df1 = df1_clean[~df1_clean[required_columns].apply(tuple, axis=1).isin(df2_clean[required_columns].apply(tuple, axis=1))]
+non_common_df2 = df2_clean[~df2_clean[required_columns].apply(tuple, axis=1).isin(df1_clean[required_columns].apply(tuple, axis=1))]
+
+# Printing common data
+print("Common data based on required columns:")
+print(common_data)
+
+# Printing non-common data with highlighting
+print("\nData in df1 not in df2:")
+print(non_common_df1.style.set_properties(**{'background-color': 'yellow'}))
+
+print("\nData in df2 not in df1:")
+print(non_common_df2.style.set_properties(**{'background-color': 'yellow'}))
